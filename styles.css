@@ -13,41 +13,76 @@ body {
     margin: 0;
 }
 
-/* Navigatiebalk */
+/* Navbar container */
+/* Navbar container */
 .navbar {
+    position: relative;
+    background-color: #007bff; /* Navbar background color */
+    height: 80px; /* Increase navbar height */
+    padding: 0 20px; /* Adjust horizontal padding */
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #007bff; /* Blauwe kleur */
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    z-index: 1; /* Ensure navbar is layered above other elements */
 }
 
+/* Navigation links styling */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
-}
-
-.nav-links li {
-    margin: 0;
+    gap: 15px;
+    padding-top: 10px; /* No padding on top for desktop */
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center; /* Center align links */
 }
 
 .nav-links a {
     text-decoration: none;
-    color: white;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    color: #ffffff;
+    font-weight: 600;
 }
 
-.nav-links a:hover {
-    background-color: #19f312;
+/* Phone highlight box */
+.phone-highlight {
+    display: flex;
+    align-items: center;
+    background-color: #51bb54; /* Light green background color */
+    padding: 10px 20px;
+    border-radius: 0 0 30px 30px; /* Top corners: 0, Bottom corners: 30px */
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff; /* Text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for a nice effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: absolute; /* Position the box over the navbar */
+    top: 0; /* Align it to the top of the navbar */
+    right: 20px; /* Position it to the right of the navbar */
+    z-index: 10; /* Ensure it stays above other elements */
+    cursor: pointer;
+}
+
+/* Phone icon styling */
+.phone-highlight i {
+    font-size: 1.2rem;
+    color: #000;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    /* Stack elements vertically */
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        height: auto; /* Allow the navbar height to grow based on content */
+        align-items: center; /* Center the items */
+        position: relative; /* Ensure the navbar has a relative position */
+    }
+
+    .nav-links {
+        padding-top: 80px; /* Add padding to move links down on mobile */
+        width: 100%; /* Full width to make space for the buttons */
+    }
 }
 
 /* Telefoonnummer in de navbar */
@@ -55,6 +90,7 @@ body {
     font-size: 1rem;
     font-weight: bold;
 }
+
 
 /* Hero Sectie */
 .hero {
