@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionele vending machine oplossingen voor bedrijven, scholen en organisaties.">
+    <title>Uw Vending Oplossingen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigatiebalk -->
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#services">Diensten</a></li>
+                <li><a href="#contact" id="contactBtn">Contact</a></li>
+            </ul>
+            <!-- Telefoonnummer in de navbar -->
+            <div class="contact-info">
+                <p>Bel: <strong>+31 6 23003443</strong></p>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Sectie -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Len Vending Machine Services</h1>
+            <p>Mijn bedrijf biedt gratis en betrouwbare vending machines die passen bij uw behoeften.</p>
+            <a href="#contact" class="btn">Start nu</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Mijn Diensten</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <i class="fas fa-truck"></i>
+                <h3>Gratis Machine Plaatsing</h3>
+                <p>De vending machines worden geleverd en geinstalleert zonder kosten voor u.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Volledige Voorraad en Onderhoud</h3>
+                <p>Ik zorg ervoor dat uw machine altijd gevuld en in topstaat is.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-credit-card"></i>
+                <h3>Moderne Betaalmogelijkheden</h3>
+                <p>Machines zijn uitgerust met contactloze betaalopties voor gemak.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Sectie -->
+    <section id="contact" class="contact">
+        <h2>Contacteer Mij</h2>
+        <p>Heeft u vragen of wilt u direct starten? Bel mij op +31 6 23003443, uw kunt mij ook een app sturen, als uw mij niet te pakken krijgt bel ik je terug. </p>
+       
+        <h3>Klik hieronder om contact met mij op te nemen zonder te bellen:</h3>
+        <!-- Contact knop die formulier toont -->
+        <button id="contactBtnShow" class="btn">Neem Contact Op</button>
+
+        <!-- Contact formulier dat aanvult na het klikken -->
+        <form id="contact-form" class="contact-form" style="display: none;">
+            <label for="first-name">Voornaam:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Uw voornaam" required>
+
+            <label for="last-name">Achternaam:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Uw achternaam" required>
+
+            <label for="email">E-mail:</label>
+            <div class="email-error">
+                <p id="email-error-msg" style="display: none; color: red; font-size: 0.9rem;">Voer een geldig e-mailadres in, bijvoorbeeld: voorbeeld@domein.nl</p>
+            </div>
+            <input type="email" id="email" name="email" placeholder="Uw e-mail" required>
+
+            <label for="message">Bericht:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Uw bericht (voel je vrij om je telefoonnummer toe te voegen)" required></textarea>
+
+            <button type="submit" class="btn" id="submitBtn">Verstuur Bericht</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Uw Vending Oplossingen. Alle Rechten Voorbehouden.</p>
+    </footer>
+
+    <!-- Includeer EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+    // Zorg ervoor dat je EmailJS correct initialiseerd met de juiste publieke sleutel.
+        (function() {
+            emailjs.init("VkSKh256c5AbB1Wjs"); // Gebruik je eigen publieke sleutel
+        })();
+        
+        // Event listener voor het tonen van het formulier
+        document.getElementById('contactBtnShow').addEventListener('click', function() {
+            document.getElementById('contact-form').style.display = 'block'; // Toont het formulier
+        });
+        
+        // Formulier Verzend Handler
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const emailField = document.getElementById('email');
+            const emailErrorMsg = document.getElementById('email-error-msg');
+        
+            // Zet de verzendknop uit zodra het formulier wordt ingediend
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Versturen...';
+
+            // Na 3 minuten (180 seconden), zet de knop weer in de actieve toestand
+            setTimeout(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Verstuur Bericht';
+            }, 180000); // 180000 ms = 3 minuten
+        
+            // Controleer of het e-mailadres correct is
+            if (!emailField.validity.valid) {
+                emailField.style.borderColor = 'red'; // Rode rand als de e-mail niet correct is
+                emailErrorMsg.style.display = 'block'; // Toon foutmelding
+            } else {
+                emailField.style.borderColor = '#ccc'; // Herstel normale rand
+                emailErrorMsg.style.display = 'none'; // Verberg foutmelding
+        
+                // Verzamel formulier gegevens
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+        
+                // EmailJS parameters
+                const params = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    message: message
+                };
+        
+                // Verstuur e-mail via EmailJS
+                emailjs.send('service_0mknhga', 'template_tbbc7q3', params)
+                    .then(function(response) {
+                        console.log('Success!', response);
+                        alert("Uw bericht is verzonden! Wij nemen snel contact met u op.");
+                        document.getElementById('contact-form').reset();
+                    }, function(error) {
+                        console.log('Failed...', error);
+                        alert("Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw.");
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
+    

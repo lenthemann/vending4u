@@ -1,0 +1,304 @@
+/* Algemeen Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+/* Navigatiebalk */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #007bff; /* Blauwe kleur */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #19f312;
+}
+
+/* Telefoonnummer in de navbar */
+.contact-info {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Hero Sectie */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 79vh;
+    background: url('vending-hero.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.hero:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.719);
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 600px;
+    padding: 0 1rem;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #4CAF50; /* Groene kleur voor knoppen */
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Contact Sectie */
+.contact {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Contact Formulier */
+.contact-form {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007bff; /* Blauwe rand bij focus */
+}
+
+.email-error {
+    font-size: 0.9rem;
+    color: red;
+    margin-bottom: 0.5rem;
+}
+
+#email:invalid {
+    border-color: red; /* Rode rand voor foutieve e-mail */
+}
+
+#email:valid {
+    border-color: #ccc; /* Normale rand als het e-mail adres correct is */
+}
+
+.contact-form button {
+    padding: 1rem;
+    background-color: rgba(8, 83, 27, 0.8); /* Semi-transparant goud */
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background-color: rgb(9, 185, 9); /* Vaste goudkleur bij hover */
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #007bff;
+    color: white;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Algemeen Stijlen voor het formulier */
+input, textarea {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+button:focus {
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+/* Onze Diensten Sectie */
+.services {
+    background-color: #ffffff;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.services .service-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.services .service-card {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 300px;
+    flex: 1;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.services .service-card i {
+    font-size: 2.5rem;
+    color: #007bff; /* Blauw voor iconen */
+    margin-bottom: 1rem;
+}
+
+.services .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.services .service-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsiviteit voor kleinere schermen */
+@media screen and (max-width: 768px) {
+    .services .service-cards {
+        flex-direction: column; /* Zet de kaarten onder elkaar */
+        align-items: center; /* Zorg ervoor dat de kaarten gecentreerd blijven */
+        gap: 1.5rem; /* Voeg ruimte toe tussen de kaarten */
+    }
+
+    .services .service-card {
+        max-width: 100%; /* Laat de kaarten de volledige breedte van hun container innemen */
+        padding: 1.5rem;
+    }
+}
+
+
+/* Responsiviteit (voor mobiele apparaten) */
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .contact-form {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+
+
