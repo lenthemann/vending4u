@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-
-    <!-- Navigatiebalk -->
     <header>
         <div class="phone-highlight">
             <i class="fas fa-phone-alt"></i> 
@@ -23,13 +20,9 @@
                 <li><a href="#services">Diensten</a></li>
                 <li><a href="#contact" id="contactBtn">Contact</a></li>
             </ul>
-            <!-- Highlighted phone number -->
-
         </nav>
     </header>
     
-
-    <!-- Hero Sectie -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Len Vending Machine Services</h1>
@@ -59,16 +52,13 @@
         </div>
     </section>
 
-    <!-- Contact Sectie -->
     <section id="contact" class="contact">
         <h2>Contacteer Mij</h2>
         <p>Heeft u vragen of wilt u direct starten? Bel mij op +31 6 23003443, uw kunt mij ook een app sturen, als uw mij niet te pakken krijgt bel ik je terug. </p>
        
         <h3>Klik hieronder om contact met mij op te nemen zonder te bellen:</h3>
-        <!-- Contact knop die formulier toont -->
         <button id="contactBtnShow" class="btn">Neem Contact Op</button>
 
-        <!-- Contact formulier dat aanvult na het klikken -->
         <form id="contact-form" class="contact-form" style="display: none;">
             <label for="first-name">Voornaam:</label>
             <input type="text" id="first-name" name="first-name" placeholder="Uw voornaam" required>
@@ -89,25 +79,20 @@
         </form>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p> </p>
     </footer>
 
-    <!-- Includeer EmailJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-    // Zorg ervoor dat je EmailJS correct initialiseerd met de juiste publieke sleutel.
         (function() {
-            emailjs.init("VkSKh256c5AbB1Wjs"); // Gebruik je eigen publieke sleutel
+            emailjs.init("VkSKh256c5AbB1Wjs");
         })();
         
-        // Event listener voor het tonen van het formulier
         document.getElementById('contactBtnShow').addEventListener('click', function() {
-            document.getElementById('contact-form').style.display = 'block'; // Toont het formulier
+            document.getElementById('contact-form').style.display = 'block';
         });
         
-        // Formulier Verzend Handler
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -115,39 +100,32 @@
             const emailField = document.getElementById('email');
             const emailErrorMsg = document.getElementById('email-error-msg');
         
-            // Zet de verzendknop uit zodra het formulier wordt ingediend
             submitBtn.disabled = true;
             submitBtn.textContent = 'Versturen...';
 
-            // Na 3 minuten (180 seconden), zet de knop weer in de actieve toestand
             setTimeout(function() {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Verstuur Bericht';
-            }, 180000); // 180000 ms = 3 minuten
+            }, 180000);
         
-            // Controleer of het e-mailadres correct is
             if (!emailField.validity.valid) {
-                emailField.style.borderColor = 'red'; // Rode rand als de e-mail niet correct is
-                emailErrorMsg.style.display = 'block'; // Toon foutmelding
+                emailField.style.borderColor = 'red';
+                emailErrorMsg.style.display = 'block';
             } else {
-                emailField.style.borderColor = '#ccc'; // Herstel normale rand
-                emailErrorMsg.style.display = 'none'; // Verberg foutmelding
+                emailField.style.borderColor = '#ccc';
+                emailErrorMsg.style.display = 'none';
         
-                // Verzamel formulier gegevens
                 const firstName = document.getElementById('first-name').value;
                 const lastName = document.getElementById('last-name').value;
                 const email = document.getElementById('email').value;
                 const message = document.getElementById('message').value;
         
-                // EmailJS parameters
                 const params = {
-                    firstName: firstName,
-                    lastName: lastName,
+                    name: firstName + " " + lastName,
                     email: email,
                     message: message
                 };
         
-                // Verstuur e-mail via EmailJS
                 emailjs.send('service_0mknhga', 'template_tbbc7q3', params)
                     .then(function(response) {
                         console.log('Success!', response);
@@ -162,4 +140,3 @@
     </script>
 </body>
 </html>
-    
